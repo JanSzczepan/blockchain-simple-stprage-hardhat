@@ -26,4 +26,23 @@ describe('SimpleStorage', function () {
       const updatedFavouriteNumber = await simpleStorage.retrieve()
       expect(updatedFavouriteNumber).to.equal(favouriteNumber)
    })
+
+   it('Should add person and favourite number', async function () {
+      const favouriteNumber = 6
+      const personName = 'John'
+
+      const transactionResponse = await simpleStorage.addPerson(
+         personName,
+         favouriteNumber
+      )
+      await transactionResponse.wait()
+
+      const johnArr = await simpleStorage.people(0)
+      const johnFavouriteNumber = await simpleStorage.nameToFavoriteNumber(
+         personName
+      )
+
+      expect(johnArr['favoriteNumber']).to.equal(favouriteNumber)
+      expect(johnFavouriteNumber).to.equal(favouriteNumber)
+   })
 })
