@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
 import 'dotenv/config'
+import './tasks/block-number'
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || ''
 const PRIVATE_KEY = process.env.PRIVATE_KEY || ''
